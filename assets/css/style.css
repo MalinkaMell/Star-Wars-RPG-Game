@@ -1,10 +1,52 @@
+@font-face {
+    font-family: 'StarJediRounded';
+    src: url('../fonts/StarJediRounded.woff2') format('woff2'),
+        url('../fonts/StarJediRounded.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'StarJediHollow';
+    src: url('../fonts/StarJediHollow.woff2') format('woff2'),
+        url('../fonts/StarJediHollow.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'StarJedi';
+    src: url('../fonts/StarJedi.woff2') format('woff2'),
+        url('../fonts/StarJedi.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
 body, html {
     height: 100%;
     font-size: 16px;
 }
 
 .bg {
-    background-image: url("../images/bg.jpg");
+    background-image: url("../images/bg4.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+.bg-luke {
+    background-image: url("../images/luke_bg.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bg-maul {
+    background-image: url("../images/maul_bg.jpg");
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -12,11 +54,155 @@ body, html {
 }
 
 .logo {
-    color: #ffe81f 
+    font-family: 'StarJediHollow';
+    font-size: 72px;
+    color: #feda4a;
+    
 }
 
-.bg-black {
-    background-color: black;
+.card-deck {
+    display: inline block;
+
+}
+
+.card {
+    max-width: 208px!important;
+    max-height: 267px!important;
+    width: 208px!important;
+    height: 267px!important;
+    border-width: 4px;
+    border-style: solid;
+    border-color: #e53235;
+    box-shadow: 20px 20px 20px 0 rgba(208, 34, 40, 1);
+    animation-name: blink1;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    border-radius: 10px;
+    transition: all .5s ease-in-out;
+    /* cursor: url(../images/cursor/Simple.png), auto; */
+  
+    
+}
+
+.attack_button {
+    position: absolute;
+    top: 200px;
+    z-index: 999;
+}
+
+#stats {
+    position: absolute;
+    top: 400px;
+    z-index: 999;
+    color: wheat
+}
+
+#attack_button {
+   /*  transform: scale(.8); */
+}
+
+#attack_button img:hover{
+    /*  transform: scale(.8); */
+ }
+
+a:hover#attack_button {
+    transform: scale(0.8);
+}
+
+a:active#attack_button {
+    transform: scale(0.6);
+}
+
+
+.card:hover {
+    transform: scale(1.2);
+   /*  -webkit-animation: rotate-scale-up 0.65s linear both;
+	        animation: rotate-scale-up 0.65s linear both; */
+  }
+
+  /* @keyframes rotate-scale-up {
+    0% {
+      -webkit-transform: scale(1) rotateZ(0);
+              transform: scale(1) rotateZ(0);
+    }
+    50% {
+      -webkit-transform: scale(2) rotateZ(180deg);
+              transform: scale(2) rotateZ(180deg);
+    }
+    100% {
+      -webkit-transform: scale(1) rotateZ(360deg);
+              transform: scale(1) rotateZ(360deg);
+    }
+  }
+   */
+.card-luke {
+    background: url("../images/cards/luke.jpg") top center no-repeat;
+}
+
+.luke-defeated {
+    background: url("../images/cards/luke-defeated.jpg") top center no-repeat;
+}
+
+.card-maul {
+    background: url("../images/cards/maul.jpg") top center no-repeat;
+}
+
+.maul-defeated {
+    background: url("../images/cards/maul-defeated.jpg") top center no-repeat;
+}
+
+.card-vader {
+    background: url("../images/cards/vader.jpg") top center no-repeat;
+}
+
+.vader-defeated {
+    background: url("../images/cards/vader-defeated.jpg") top center no-repeat;
+}
+
+.card-sidi {
+    background: url("../images/cards/sidi.jpg") top center no-repeat;
+}
+
+.sidi-defeated {
+    background: url("../images/cards/sidi-defeated.jpg") top center no-repeat;
+}
+
+.card-img-top {
+    width: 198px!important;
+    height: 255px!important;
+    
+}
+
+.card-header {
+    text-align: center;
+    position: relative;
+    top:100px;
+    text-shadow: 
+    2px 0 0px #800040, 
+    3px 2px 0px rgba(77,0,38,0.5), 
+    3px 0 3px #FF002B, 
+    5px 0 3px #800015, 
+    6px 2px 3px rgba(77,0,13,0.5), 
+    6px 0 9px #ffbaba, 
+    8px 0 9px #802A00, 
+    9px 2px 9px rgba(77,25,0,0.5), 
+    9px 0 18px rgb(168, 161, 123), 
+    11px 0 18px #ffbaba;
+    color: #ffe81f ;
+    font-family: 'Teko', sans-serif;
+
+    
+}
+.card-footer {
+    text-align: center;
+    position: relative;
+    top:90px;
+    color: #d9d9d9;
+    border-top:0!important;
+    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+    
 }
 
 .titles {
@@ -25,21 +211,98 @@ body, html {
     -1px -1px 1px rgba(255,255,255,.1), 
     1px 1px 1px rgba(0,0,0,.5),
     3px 3px 1px rgba(0,0,0,.5);
+    font-family: 'Teko', sans-serif;
 }
 
-.stats {
-    color: transparent;
-background: #666666;
--webkit-background-clip: text;
--moz-background-clip: text;
-background-clip: text;
-text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
+
+@keyframes blink1 {
+    0% {
+      box-shadow: 0 0 10px 10px rgba(208, 34, 40, 1);
+    }
+    25% {
+        box-shadow: 0 0 10px 10px rgba(208, 34, 40, .8);
+      }
+    50% {
+      box-shadow: 0 0 10px 10px rgba(208, 34, 40, .4);
+    }
+    100% {
+      box-shadow: 0 0 10px 10px rgba(208, 34, 40, .1);
+    }
+  }
+
+  #mask {
+    display: none;
+    background: #000;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    z-index: 999;
+}
+.popup {
+    display: none;
+	background: #333 url("../images/popup-bg.jpg") no-repeat top center;
+	text-align: center;
+	padding: 10px;
+	width: 711px;
+	height: 400px;
+    float: left;
+    font-size: 1.2em;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 99999;
+    box-shadow: 2px 2px 5px 5px #ffe81f, -2px -2px 5px 5px #ffe81f;
+    
+}
+.message {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	height: 153px;
+    text-shadow: 4px 4px 4px #000;
+    font-family: 'Teko', sans-serif;
+}
+img.btn_close {
+	float: right;
+	width: 34px;
+	height: 36px;
+	opacity: 1;
+	box-shadow: 1px 1px 2px #999, -1px -1px 2px #999;
 }
 
-.card-header {
-    padding: 0!important;
+.star-wars-text {
+    display: flex;
+  justify-content: center;
+  position: relative;
+  height: 800px;
+  color: #feda4a;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 500%;
+  font-weight: 600;
+  letter-spacing: 6px;
+  line-height: 150%;
+  perspective: 400px;
+  text-align: center;
 }
 
-.card-footer {
-    padding: 0!important;
-}
+.crawl {
+    position: relative;
+    top: 9999px;
+    transform-origin: 50% 100%;
+    animation: crawl 60s linear;
+  }
+
+  @keyframes crawl {
+    0% {
+      top: 0;
+      transform: rotateX(20deg)  translateZ(-100px);
+    }
+    100% { 
+      top: 0;
+      transform: rotateX(25deg) translateZ(100px);
+    }
+  }

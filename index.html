@@ -6,106 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Star Wars RPG Game</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Teko:700&display=swap" rel="stylesheet">
 </head>
-<link rel="stylesheet" href="assets/css/reset.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="assets/css/style.css">
 
 <body class="bg">
-    <nav class="navbar navbar-dark bg-black justify-content-center text-white w-100">
-        <h1 class="logo">Star Wars RPG</h1>
-    </nav>
-    <div class="container">
-        <div class="row">
-            <div class="col-8">
-                <div class="row">
-                    <div class="col-12">
-                        <h3 class="titles text-left" id="main_character"> Select Your Character</h3>
-                    </div>
-                </div>
-                <div class="row justify-content-start">
-                    <div class="col-3">
-                        <div class="card-group pt-2">
-                            <div class="card">
-                                <div class="card-header text-center">Luke Skywalker</div>
-                                <img src="assets/images/luke.jpg" class="card-img-top" alt="...">
-                                <div class="card-footer text-center"><small class="text-muted">120</small></div>
-                            </div>
+    <div class="wrapper">
+        <div class="container-fluid d-flex flex-column align-items-center">
+            <div class="text-center attack_button ">
+                <a href="#" id="attack_button" style="display: none"><img src="assets/images/lightsabers-2.png"></a>
+            </div>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <h3 class="titles text-left" id="main_character">Enemies available to attack</h3>
-                    </div>
-                </div>
-                <div class="row justify-content-start">
-                    <div class="col-12">
-                        <div class="card-group pt-2">
-                            <div class="card">
-                                <div class="card-header text-center">Luke Skywalker</div>
-                                <img src="assets/images/luke.jpg" class="card-img-top" alt="...">
-                                <div class="card-footer text-center"><small class="text-muted">120</small></div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header text-center">Obi One Kenobi</div>
-                                <img src="assets/images/obione.jpg" class="card-img-top" alt="Obi-Wan Kenobi">
-                                <div class="card-footer text-center"><small class="text-muted">120</small>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header text-center">Dart Sidious</div>
-                                <img src="assets/images/dart.jpg" class="card-img-top" alt="Dart Sidious">
-                                <div class="card-footer text-center"><small class="text-muted">120</small></div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header text-center">Dart Maul</div>
-                                <img src="assets/images/dartmaul.jpg" class="card-img-top" alt="Dart Maul">
-                                <div class="card-footer text-center"><small class="text-muted">120</small></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <h3 class="titles text-left" id="main_character">Defender</h3>
-                    </div>
-                </div>
-                <div class="row justify-content-start">
-                    <div class="col-3">
-                        <div class="card-group pt-2">
-                            <div class="card">
-                                <div class="card-header text-center">Luke Skywalker</div>
-                                <img src="assets/images/luke.jpg" class="card-img-top" alt="...">
-                                <div class="card-footer text-center"><small class="text-muted">120</small></div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="row text-white" id="stats" style="display: none"></div>
+
+            <div class="row ">
+                <div class="col-12">
+                    <h1 class="logo text-center">Star Wars RPG</h1>
                 </div>
             </div>
 
-            <div class="col-4 mt-2">
-                <div class="card h-100">
-                    <div class="card-body text-left h-100">
-                        <h3 class="stats text-center" id="main_character">Stats</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis earum nesciunt voluptas
-                            illo deleniti alias quidem corrupti voluptatem minima impedit sint fugit tenetur unde
-                            dolorem facilis, quas voluptate ipsum. Blanditiis similique officiis assumenda deleniti iure
-                            molestias cumque placeat quos esse! Repudiandae nisi voluptatibus non perspiciatis, fugiat
-                            unde accusantium tempore minus consequatur voluptate consectetur eos </p>
+            <div class="row justify-content-start ">
+                <h2 class="titles text-center p-5" id="title_heading">Select Your Character</h2>
+            </div>
+            <div id="other_enemies" class=" container d-flex justify-content-center align-items-bottom"
+                style="position: absolute; bottom:40px;">
 
-                    </div>
-                    <div class="card-footer"><button type="button" class="btn btn-dark btn-lg btn-block">Attack!</button></div>
-                </div>
+            </div>
+            <div id="appended_chars" class="container d-flex justify-content-center">
+
             </div>
         </div>
+    </div>
+    <div id="popup" class="popup">
+        <a href="#" class="close"><img src="assets/images/close-button.jpg" class="btn_close" title="Close Window"
+                alt="Close" /></a>
+        <div class="star-wars-text">
+            <div class="message fancy-font display-2 text-warning crawl">Message goes here</div>
+        </div>
+    </div>
+    <div class=" container d-flex justify-content-center " id="chars">
 
     </div>
-
-
-
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="assets/javascript/game.js"></script>
