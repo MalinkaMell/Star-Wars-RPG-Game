@@ -38,24 +38,9 @@ body, html {
     
 }
 
-.bg-luke {
-    background-image: url("../images/luke_bg.jpg");
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.bg-maul {
-    background-image: url("../images/maul_bg.jpg");
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 .logo {
     font-family: 'StarJediHollow';
-    font-size: 72px;
+    font-size: 90px;
     color: #feda4a;
     
 }
@@ -66,10 +51,10 @@ body, html {
 }
 
 .card {
-    max-width: 208px!important;
-    max-height: 267px!important;
+    max-width: 206px!important;
+    max-height: 265px!important;
     width: 208px!important;
-    height: 267px!important;
+    height: 265px!important;
     border-width: 4px;
     border-style: solid;
     border-color: #e53235;
@@ -85,9 +70,15 @@ body, html {
     
 }
 
+.card-footer {
+    position: absolute!important;
+    top: 200px!important;
+    left: 35%!important;
+}
+
 .attack_button {
     position: absolute;
-    top: 200px;
+    top: 250px;
     z-index: 999;
 }
 
@@ -98,13 +89,6 @@ body, html {
     color: wheat
 }
 
-#attack_button {
-   /*  transform: scale(.8); */
-}
-
-#attack_button img:hover{
-    /*  transform: scale(.8); */
- }
 
 a:hover#attack_button {
     transform: scale(0.8);
@@ -117,25 +101,8 @@ a:active#attack_button {
 
 .card:hover {
     transform: scale(1.2);
-   /*  -webkit-animation: rotate-scale-up 0.65s linear both;
-	        animation: rotate-scale-up 0.65s linear both; */
   }
 
-  /* @keyframes rotate-scale-up {
-    0% {
-      -webkit-transform: scale(1) rotateZ(0);
-              transform: scale(1) rotateZ(0);
-    }
-    50% {
-      -webkit-transform: scale(2) rotateZ(180deg);
-              transform: scale(2) rotateZ(180deg);
-    }
-    100% {
-      -webkit-transform: scale(1) rotateZ(360deg);
-              transform: scale(1) rotateZ(360deg);
-    }
-  }
-   */
 .card-luke {
     background: url("../images/cards/luke.jpg") top center no-repeat;
 }
@@ -144,12 +111,12 @@ a:active#attack_button {
     background: url("../images/cards/luke-defeated.jpg") top center no-repeat;
 }
 
-.card-maul {
-    background: url("../images/cards/maul.jpg") top center no-repeat;
+.card-chew {
+    background: url("../images/cards/chew.jpg") top center no-repeat;
 }
 
-.maul-defeated {
-    background: url("../images/cards/maul-defeated.jpg") top center no-repeat;
+.chew-defeated {
+    background: url("../images/cards/chew-defeated.jpg") top center no-repeat;
 }
 
 .card-vader {

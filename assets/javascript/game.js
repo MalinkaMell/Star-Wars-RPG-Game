@@ -3,7 +3,7 @@ const characters = [
         nickname: "luke",
         name: "Luke Skywalker",
         image: "luke.jpg",
-        background: "luke_bg.jpg",
+        audio: "luke.mp3",
         health: 50,
         reset_health: 50,
         power: 5,
@@ -13,7 +13,7 @@ const characters = [
         nickname: "vader",
         name: "Darth Vader",
         image: "vader.jpg",
-        background: "vader_bg.jpg",
+        audio: "vader.mp3",
         health: 50,
         reset_health: 50,
         power: 5,
@@ -23,17 +23,17 @@ const characters = [
         nickname: "sidi",
         name: "Darth Sidious",
         image: "sidi.jpg",
-        background: "jedy_bg.jpg",
+        audio: "sidi.mp3",
         health: 50,
         reset_health: 50,
         power: 5,
         counter: 5
     },
     {
-        nickname: "maul",
-        name: "Darth Maul",
-        image: "maul.jpg",
-        background: "jedy_bg.jpg",
+        nickname: "chew",
+        name: "Chewbacca",
+        image: "chew.jpg",
+        audio: "chew.mp3",
         health: 50,
         reset_health: 50,
         power: 5,
@@ -95,6 +95,23 @@ function buildGame() {
     }
 }
 
+//background music
+function playMusic() {
+    let audio = new Audio("./assets/audio/Star-Wars-Theme -John-Williams.mp3");
+    audio.volume = 0.1;
+    audio.play();
+}
+//chars sound
+function playCharSound(char) {
+    let audio = new Audio("./assets/audio/chars/" + char + ".mp3");
+    audio.play();
+}
+//attack sound
+function playAttackSound() {
+    let audio = new Audio("./assets/audio/ls03.mp3");
+    audio.play();
+}
+
 function selectMainChar() {
 
     console.log(enemiesArray)
@@ -109,14 +126,13 @@ function selectMainChar() {
                 basePower = characters[i].power;
                 $("#" + nickname).animate({ top: "+=100px", left: "+=100px" }, "fast");
                 $("#" + nickname).attr("style", "position:absolute");
+                playCharSound(mainChar);
 
                 if (mainChar === enemiesArray[i].nickname) {
 
                     let char = enemiesArray[i];
                     let charIndex = enemiesArray.indexOf(char);
-                    console.log(char, charIndex);
                     enemiesArray.splice(charIndex, 1);
-                    console.log(enemiesArray)
                 }
                 selectEnemy(mainChar);
             }
@@ -129,7 +145,7 @@ function selectEnemy(mainChar) {
 
     for (let i = 0; i < enemiesArray.length; i++) {
         $("#other_enemies").css("transform", "scale(1)");
-       
+
         let enemy = enemiesArray[i].nickname;
         $("#" + enemy).on("click", function () {
             if (mainHasBeenSelected === true && enemyHasBeenSelected === false) {
@@ -140,6 +156,7 @@ function selectEnemy(mainChar) {
 
                     $("#" + enemy).animate({ top: "+=100px", right: "+=100px" }, "fast");
                     $("#" + enemy).attr("style", "position:absolute");
+                    playCharSound(enemy)
                     $("#other_enemies").css("transform", "scale(0.5)");
                     setTimeout(function () {
                         $("#attack_button").attr("style", "display: block");
@@ -212,9 +229,9 @@ let popUp = () => {
 
         $("#mask , .popup").fadeOut(300, function () {
             $("#mask").remove();
-
+            $("#title_heading").html("Select Your Character");
             buildGame();
-            console.log("clicco x")
+            console.log("clicco x");
         });
 
         return false;
@@ -266,12 +283,11 @@ function attack(main, enemy) {
         setTimeout(function () {
             $(".card-" + enemy.nickname).css("transform", "scale(0)");
             $(".card-" + enemy.nickname).css("style", "display:none");
-        }, 2000);
+        }, 1000);
         enemyHasBeenSelected = false;
         //nextEnemySelected = false;
 
         if (enemiesArray.length === 0) {
-
             $(".message").html("Congratulations!<br>You have defeated all of your enemies!");
             setTimeout(popUp, 2000)
         }
@@ -294,7 +310,7 @@ function attack(main, enemy) {
         setTimeout(function () {
             $(".card-" + main.nickname).css("transform", "scale(0");
             $(".card-" + main.nickname).remove();
-        }, 2000);
+        }, 1000);
         mainCharDead = true;
 
         $(".message").html("Too bad!<br>You are dead!");
@@ -303,8 +319,11 @@ function attack(main, enemy) {
 }
 
 //initializing game
+playMusic()
 buildGame();
 
 $("#attack_button").on("click", function () {
+
     attack(mainChar, mainEnemy);
+    playAttackSound();
 })

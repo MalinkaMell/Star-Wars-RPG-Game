@@ -2,7 +2,7 @@
 
 **Here's how the app works:**
 
-
+[Playable Demo](https://malinkamell.github.io/Star-Wars-RPG-Game/)
 
 
 *   When the game starts, the player will choose a character by clicking on the fighter's picture. The player will fight as that character for the rest of the game.
@@ -22,4 +22,7 @@ The opponent character will instantly counter the attack. When that happens, the
 
 *   The player wins the game by defeating all enemy characters. The player loses the game the game if their character's HP falls to zero or below.
 
+**Optimized for 1920x1080 screen resolution and Google Chrome Version 77.0.3865.75**
+
 _Made for UOA Bootcamp_
+_September, 2019_
