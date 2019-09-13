@@ -97,7 +97,7 @@ function buildGame() {
 
 //background music
 function playMusic() {
-    let audio = new Audio("./assets/audio/Star-Wars-Theme -John-Williams.mp3");
+    let audio = new Audio("./assets/audio/Star-Wars-Theme-John-Williams.mp3");
     audio.volume = 0.1;
     audio.play();
 }
