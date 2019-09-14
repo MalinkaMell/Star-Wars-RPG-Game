@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'StarJediRounded';
     src: url('../fonts/StarJediRounded.woff2') format('woff2'),
-        url('../fonts/StarJediRounded.woff') format('woff');
+    url('../fonts/StarJediRounded.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -9,7 +9,7 @@
 @font-face {
     font-family: 'StarJediHollow';
     src: url('../fonts/StarJediHollow.woff2') format('woff2'),
-        url('../fonts/StarJediHollow.woff') format('woff');
+    url('../fonts/StarJediHollow.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -17,11 +17,10 @@
 @font-face {
     font-family: 'StarJedi';
     src: url('../fonts/StarJedi.woff2') format('woff2'),
-        url('../fonts/StarJedi.woff') format('woff');
+    url('../fonts/StarJedi.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
-
 
 
 body, html {
@@ -65,9 +64,6 @@ body, html {
     animation-direction: alternate;
     border-radius: 10px;
     transition: all .5s ease-in-out;
-    /* cursor: url(../images/cursor/Simple.png), auto; */
-  
-    
 }
 
 .card-footer {
@@ -89,7 +85,6 @@ body, html {
     color: wheat
 }
 
-
 a:hover#attack_button {
     transform: scale(0.8);
 }
@@ -97,7 +92,6 @@ a:hover#attack_button {
 a:active#attack_button {
     transform: scale(0.6);
 }
-
 
 .card:hover {
     transform: scale(1.2);
@@ -138,7 +132,6 @@ a:active#attack_button {
 .card-img-top {
     width: 198px!important;
     height: 255px!important;
-    
 }
 
 .card-header {
@@ -158,8 +151,6 @@ a:active#attack_button {
     11px 0 18px #ffbaba;
     color: #ffe81f ;
     font-family: 'Teko', sans-serif;
-
-    
 }
 .card-footer {
     text-align: center;
@@ -169,7 +160,6 @@ a:active#attack_button {
     border-top:0!important;
     text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
-    
 }
 
 .titles {
@@ -180,7 +170,6 @@ a:active#attack_button {
     3px 3px 1px rgba(0,0,0,.5);
     font-family: 'Teko', sans-serif;
 }
-
 
 @keyframes blink1 {
     0% {
@@ -211,7 +200,6 @@ a:active#attack_button {
 }
 .popup {
     display: none;
-	background: #333 url("../images/popup-bg.jpg") no-repeat top center;
 	text-align: center;
 	padding: 10px;
 	width: 711px;
@@ -224,6 +212,12 @@ a:active#attack_button {
     z-index: 99999;
     box-shadow: 2px 2px 5px 5px #ffe81f, -2px -2px 5px 5px #ffe81f;
     
+}
+.popup-won {
+    background: #333 url("../images/popup-bg-1.jpg") no-repeat top center;
+}
+.popup-defeat {
+    background: #333 url("../images/popup-bg.jpg") no-repeat top center;
 }
 .message {
 	display: flex;
@@ -243,33 +237,33 @@ img.btn_close {
 
 .star-wars-text {
     display: flex;
-  justify-content: center;
-  position: relative;
-  height: 800px;
-  color: #feda4a;
-  font-family: 'Pathway Gothic One', sans-serif;
-  font-size: 500%;
-  font-weight: 600;
-  letter-spacing: 6px;
-  line-height: 150%;
-  perspective: 400px;
-  text-align: center;
+    justify-content: center;
+    position: relative;
+    height: 800px;
+    color: #feda4a;
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 500%;
+    font-weight: 600;
+    letter-spacing: 6px;
+    line-height: 150%;
+    perspective: 400px;
+    text-align: center;
 }
 
-.crawl {
+.starwars {
     position: relative;
     top: 9999px;
     transform-origin: 50% 100%;
-    animation: crawl 60s linear;
-  }
+    animation: starwars 60s linear;
+}
 
-  @keyframes crawl {
+@keyframes starwars {
     0% {
-      top: 0;
-      transform: rotateX(20deg)  translateZ(-100px);
+        top: 50px;
+        transform: rotateX(20deg)  translateZ(-100px);
     }
     100% { 
-      top: 0;
-      transform: rotateX(25deg) translateZ(100px);
+        top: 0;
+        transform: rotateX(25deg) translateZ(100px);
     }
-  }
+}

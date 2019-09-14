@@ -1,73 +1,77 @@
+//array of characters objects... i am really heaving difficulties to balance those characters :( 
 const characters = [
     {
         nickname: "luke",
         name: "Luke Skywalker",
         image: "luke.jpg",
         audio: "luke.mp3",
-        health: 50,
-        reset_health: 50,
-        power: 5,
-        counter: 5
+        health: 70,
+        reset_health: 70,
+        power: 10,
+        counter: 20
     },
     {
         nickname: "vader",
         name: "Darth Vader",
         image: "vader.jpg",
         audio: "vader.mp3",
-        health: 50,
-        reset_health: 50,
-        power: 5,
-        counter: 5
+        health: 80,
+        reset_health: 80,
+        power: 8,
+        counter: 16
     },
     {
         nickname: "sidi",
         name: "Darth Sidious",
         image: "sidi.jpg",
         audio: "sidi.mp3",
-        health: 50,
-        reset_health: 50,
-        power: 5,
-        counter: 5
+        health: 100,
+        reset_health: 100,
+        power: 4,
+        counter: 8
     },
     {
         nickname: "chew",
         name: "Chewbacca",
         image: "chew.jpg",
         audio: "chew.mp3",
-        health: 50,
-        reset_health: 50,
-        power: 5,
-        counter: 5
+        health: 120,
+        reset_health: 120,
+        power: 6,
+        counter: 7
     }
 ]
 
 
-let mainChar = "";
-let mainEnemy = "";
-let basePower = 0;
-let enemiesArray = [];
-let mainHasBeenSelected = false;
-let selectEnemyTitle = "Select Your Enemy";
+let mainChar = ""; // setting main character
+let mainEnemy = ""; // stting the enemy
+let basePower = 0; // setting base power to 0
+let enemiesArray = []; //an empty array, going to push here the 3 enemies
+let mainHasBeenSelected = false; //verifying if main character has been selected
+let enemyHasBeenSelected = false; //verifying if enemy has been selected
+//setting some  titles
+let selectEnemyTitle = "Select Your Enemy"; 
 let attackTitle = "Click on Lightsabers to attack your enemy!";
-let enemyHasBeenSelected = false;
 
 
+//resetting all when restarting the game
 function resetAll() {
     mainHasBeenSelected = false;
     enemyHasBeenSelected = false;
     enemiesArray = [];
     $("#appended_chars").empty();
     $("#other_enemies").empty();
-
+    $("#attack_button").attr("style", "display: none");
 }
 
+//pushing enemies to that array
 function pushEnemies() {
     for (let i = 0; i < characters.length; i++) {
         enemiesArray.push(characters[i])
     }
-
 }
 
+//here i am dynamically creating characters cards
 function buildGame() {
     resetAll();
     pushEnemies()
@@ -95,12 +99,22 @@ function buildGame() {
     }
 }
 
-//background music
-function playMusic() {
-    let audio = new Audio("./assets/audio/Star-Wars-Theme-John-Williams.mp3");
-    audio.volume = 0.1;
-    audio.play();
+//background music - hope it will work once on github, no way to verify it on local (found it on stackoverflow, wanna know more about promises)
+let playMusic = function () {
+    return new Promise(function (resolve, reject) {
+        let audio = new Audio("./assets/audio/Star-Wars-Theme-John-Williams.mp3");
+        audio.volume = 0.1;
+        audio.preload = "auto";// intend to play through
+        audio.autoplay = true;// autoplay when loaded
+        audio.onerror = reject;// on error, reject
+        audio.onended = resolve;// when done, resolve
+    })
+
 }
+playMusic().then(function () {
+    console.log("risolto?")
+})
+
 //chars sound
 function playCharSound(char) {
     let audio = new Audio("./assets/audio/chars/" + char + ".mp3");
@@ -109,6 +123,16 @@ function playCharSound(char) {
 //attack sound
 function playAttackSound() {
     let audio = new Audio("./assets/audio/ls03.mp3");
+    audio.play();
+}
+//defeat sound
+function playDefeatSound() {
+    let audio = new Audio("./assets/audio/defeat.mp3");
+    audio.play();
+}
+//victory sound
+function playVictorySound() { //huh! don't really know what sound to use in case of victory lol
+    let audio = new Audio("./assets/audio/happy.mp3");
     audio.play();
 }
 
@@ -197,8 +221,6 @@ function displayStats(main, enemy) {
     );
     $("." + enemy.nickname + "_health").text(enemy.health)
     $("." + main.nickname + "_health").text(main.health)
-
-
 }
 
 //popup window function
@@ -214,12 +236,9 @@ let popUp = () => {
     //displaying popup window after user wins or lose
     $("#popup").css("display", "block");
     //setting the center alignment for popup
-    var popMargTop = ($("#popup").height() + 24) / 2;
-    var popMargLeft = ($("#popup").width() + 24) / 2;
-    $("#popup").css({
-        "margin-top": -popMargTop,
-        "margin-left": -popMargLeft
-    });
+    let popMargTop = ($("#popup").height() + 24) / 2;
+    let popMargLeft = ($("#popup").width() + 24) / 2;
+    $("#popup").css({"margin-top": -popMargTop,"margin-left": -popMargLeft });
 
     // add the overlay mask to body
     $("body").append("<div id=\"mask\"></div>");
@@ -230,8 +249,9 @@ let popUp = () => {
         $("#mask , .popup").fadeOut(300, function () {
             $("#mask").remove();
             $("#title_heading").html("Select Your Character");
+            $("#popup").removeClass("popup-won");
+            $("#popup").removeClass("popup-defeat");
             buildGame();
-            console.log("clicco x");
         });
 
         return false;
@@ -242,42 +262,40 @@ let popUp = () => {
 //function attack
 function attack(main, enemy) {
     let enemyIndex = 0;
-
+//looping trough enemies array, finding the index of current enemy
     for (let i = 0; i < enemiesArray.length; i++) {
 
         if (enemiesArray[i].nickname === enemy) {
             enemy = enemiesArray[i];
             enemyIndex = enemiesArray.indexOf(enemy);
-            //console.log("this is index of enemy in enemy array: "+ enemyIndex);
         }
     }
-
+//finding main chars data
     for (let i = 0; i < characters.length; i++) {
         if (characters[i].nickname === main) {
             main = characters[i];
         }
 
     }
-
+//untill they are alive
     if (enemy.health > 0 && main.health > 0) {
         //--------- fight logic ------------//
         enemy.health = enemy.health - basePower;
+
         main.health = main.health - enemy.counter;
+
+
         displayStats(main, enemy);
         basePower = basePower + main.power;
         //--------- /fight logic ------------//
     }
-
+//if enemy dies
     if (enemy.health <= 0) {
-        console.log(enemiesArray);
-        enemiesArray.splice(enemyIndex, 1);
-        console.log(enemiesArray);
+        enemiesArray.splice(enemyIndex, 1); //taking him out of the array
+        //all the jquery to update info
         $("#title_heading").html(`${enemy.name} has been defeated! <br> Select youe next enemy!`);
-        $("#attack_button").attr("style", "display: none")
-
+        $("#attack_button").attr("style", "display: none");
         $(".card-" + enemy.nickname).addClass(enemy.nickname + "-defeated");
-
-
         $(".card-" + enemy.nickname + " .card-header").text("");
         $(".card-" + enemy.nickname + " .card-footer").text("");
         setTimeout(function () {
@@ -285,21 +303,22 @@ function attack(main, enemy) {
             $(".card-" + enemy.nickname).css("style", "display:none");
         }, 1000);
         enemyHasBeenSelected = false;
-        //nextEnemySelected = false;
-
+//if all enemies are dead
         if (enemiesArray.length === 0) {
+            
+            $("#popup").addClass("popup-won");
             $(".message").html("Congratulations!<br>You have defeated all of your enemies!");
+            playVictorySound();
             setTimeout(popUp, 2000)
         }
         else {
-            //nextEnemy(main);
-            selectEnemy(main)
+            selectEnemy(main);
         }
 
 
 
     }
-
+//if main is dead
     if (main.health <= 0) {
 
         $("#title_heading").html(`You has been defeated!`);
@@ -312,7 +331,7 @@ function attack(main, enemy) {
             $(".card-" + main.nickname).remove();
         }, 1000);
         mainCharDead = true;
-
+        $("#popup").addClass("popup-defeat");
         $(".message").html("Too bad!<br>You are dead!");
         setTimeout(popUp, 2000)
     }
@@ -323,7 +342,6 @@ playMusic()
 buildGame();
 
 $("#attack_button").on("click", function () {
-
     attack(mainChar, mainEnemy);
     playAttackSound();
 })
