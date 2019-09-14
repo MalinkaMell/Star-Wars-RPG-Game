@@ -267,3 +267,21 @@ img.btn_close {
         transform: rotateX(25deg) translateZ(100px);
     }
 }
+
+#attacker_title {
+    position: absolute; 
+    top:400px; 
+    left: 190px;
+}
+
+#defender_title {
+    position: absolute; 
+    top:400px; 
+    right: 190px;
+}
+
+#other_enemies_title {
+    position: absolute; 
+    bottom:20px; 
+    left:700px;
+}

@@ -197,8 +197,11 @@ function selectEnemy(mainChar) {
 
 //if everyone is in place, showing the attack button, putting not chosen on the bench and starting the game!
 function startGame(main, enemy) {
+    $("#other_enemies_title").attr("style", "display: block");
+    $("#defender_title").attr("style", "display: block");
+    $("#attacker_title").attr("style", "display: block");
     $("#title_heading").text(attackTitle);
-    $("#attack_button").attr("style", "display: block")
+    $("#attack_button").attr("style", "display: block");
     for (let i = 0; i < characters.length; i++) {
 
         if (characters[i].nickname !== enemy && characters[i].nickname !== main) {
@@ -322,7 +325,7 @@ function attack(main, enemy) {
     if (main.health <= 0) {
 
         $("#title_heading").html(`You has been defeated!`);
-        $("#attack_button").attr("style", "display: none")
+        $("#attack_button").attr("style", "display: none");
         $(".card-" + main.nickname).addClass(main.nickname + "-defeated");
         $(".card-" + main.nickname + " .card-header").text("");
         $(".card-" + main.nickname + " .card-footer").text("");
