@@ -1,3 +1,5 @@
+$( document ).ready(function() {
+
 //array of characters objects... i am really heaving difficulties to balance those characters :( 
 const characters = [
     {
@@ -348,3 +350,6 @@ $("#attack_button").on("click", function () {
     attack(mainChar, mainEnemy);
     playAttackSound();
 })
+
+
+});
