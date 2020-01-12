@@ -1,6 +1,6 @@
 # Star-Wars-RPG-Game
 
-![Banner](public/images/githubtpl.png)
+![Banner](assets/images/githubtpl.png)
 
 **Here's how the app works:**
 
